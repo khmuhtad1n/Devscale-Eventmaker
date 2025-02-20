@@ -1,84 +1,78 @@
-"use server";
 import { cookies } from "next/headers";
 import { google } from "@/utils/arctic";
 import { prisma } from "@/utils/prisma";
 import { redirect } from "next/navigation";
-import { NextResponse } from "next/server";
 
-export async function GET(request) {
-  try {
-    const searchParams = new URL(request.url).searchParams;
-    const code = searchParams.get("code");
+export async function GET(req) {
+  const query = req.nextUrl.searchParams;
+  const code = query.get("code");
 
-    if (!code) {
-      return NextResponse.json({ error: "No code provided" }, { status: 400 });
-    }
+  console.log({ code });
 
-    const cookieStore = cookies();
-    const codeVerifier = cookieStore.get("codeVerifier")?.value;
+  const cookieStore = await cookies();
+  const codeVerifier = cookieStore.get("codeVerifier")?.value;
 
-    if (!codeVerifier) {
-      return NextResponse.json(
-        { error: "No code verifier found" },
-        { status: 400 }
-      );
-    }
+  //code validation
+  const tokens = await google.validateAuthorizationCode(code, codeVerifier);
+  const accessToken = tokens.accessToken();
 
-    // Validate the authorization code
-    const tokens = await google.validateAuthorizationCode(code, codeVerifier);
-    const accessToken = tokens.accessToken();
+  const res = await fetch("https://openidconnect.googleapis.com/v1/userinfo", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const data = await res.json();
+  console.log({ data });
 
-    // Get user info from Google
-    const res = await fetch("https://openidconnect.googleapis.com/v1/userinfo", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    const data = await res.json();
+  //check user
+  const user = await prisma.user.findUnique({
+    where: {
+      email: data.email,
+    },
+  });
 
-    // Check if user exists
-    const user = await prisma.user.findUnique({
-      where: {
+  //logicnya adalah, apakah user sudah ada di database?
+  //if available, create new session and redirect ke dashboard
+  //if not available, create new user and create new session and redirect ke dashboard
+
+  //ini kalo gaada, yaudah buat usertannpa password
+  if (!user) {
+    const newUser = await prisma.user.create({
+      data: {
+        name: data.name,
         email: data.email,
+        avatarUrl: data.picture,
       },
     });
-
-    let userId;
-
-    // Create new user if doesn't exist
-    if (!user) {
-      const newUser = await prisma.user.create({
-        data: {
-          name: data.name,
-          email: data.email,
-          avatarUrl: data.picture,
-        },
-      });
-      userId = newUser.id;
-    } else {
-      userId = user.id;
-    }
-
-    // Create new session
     const newSession = await prisma.session.create({
       data: {
-        userId: userId,
+        userId: newUser.id,
       },
     });
 
-    // Set session cookie
+    //set cookie
     cookieStore.set("sessionId", newSession.id, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
     });
 
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  } catch (error) {
-    console.error("OAuth callback error:", error);
-    return NextResponse.json(
-      { error: "Authentication failed" },
-      { status: 500 }
-    );
+    redirect("/dashboard");
   }
+
+  // if available, create new session and redirect ke dashboard
+  const newSession = await prisma.session.create({
+    data: {
+      userId: user.id,
+    },
+  });
+
+  //set cookie
+  cookieStore.set("sessionId", newSession.id, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+  });
+
+  redirect("/dashboard");
 }
