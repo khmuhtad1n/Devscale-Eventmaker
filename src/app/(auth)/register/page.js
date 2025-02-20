@@ -9,8 +9,8 @@ export default function Page() {
   const [state, formAction, pending] = useActionState(registerAction, null);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
+    <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full">
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">
             Create account
@@ -63,7 +63,9 @@ export default function Page() {
 
           {state?.status === "error" && (
             <div className="p-4 rounded-lg bg-rose-50 border border-rose-200">
-              <p className="text-sm text-rose-600 text-center">{state.message}</p>
+              <p className="text-sm text-rose-600 text-center">
+                {state.message}
+              </p>
             </div>
           )}
           {state?.status === "success" && (
@@ -80,7 +82,9 @@ export default function Page() {
             <div className="w-full border-t border-gray-200"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">or continue with</span>
+            <span className="px-2 bg-white text-gray-500">
+              or continue with
+            </span>
           </div>
         </div>
 
