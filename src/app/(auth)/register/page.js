@@ -1,27 +1,36 @@
 "use client";
 import { Button, Input } from "@heroui/react";
-import { useActionState } from "react";
-import { loginAction } from "./action";
 import { OauthButton } from "../_components/oauthButton";
+import { useActionState } from "react";
+import { registerAction } from "./action";
 import Link from "next/link";
 
 export default function Page() {
-  const [state, formAction, pending] = useActionState(loginAction, null);
+  const [state, formAction, pending] = useActionState(registerAction, null);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-            Welcome back
+            Create account
           </h1>
           <p className="mt-2 text-sm text-gray-600">
-            Sign in to your account to continue
+            Join us to start creating events
           </p>
         </div>
 
         <form className="mt-8 space-y-6" action={formAction}>
           <div className="space-y-4">
+            <Input
+              label="Full Name"
+              placeholder="Enter your full name"
+              name="name"
+              type="text"
+              variant="underlined"
+              size="lg"
+              required
+            />
             <Input
               label="Email address"
               placeholder="Enter your email"
@@ -33,7 +42,7 @@ export default function Page() {
             />
             <Input
               label="Password"
-              placeholder="Enter your password"
+              placeholder="Create a password"
               name="password"
               type="password"
               variant="underlined"
@@ -49,7 +58,7 @@ export default function Page() {
             color="primary"
             size="lg"
           >
-            Sign in
+            Create account
           </Button>
 
           {state?.status === "error" && (
@@ -78,12 +87,12 @@ export default function Page() {
         <OauthButton />
 
         <p className="mt-6 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <Link
-            href="/register"
+            href="/login"
             className="font-medium text-primary-600 hover:text-primary-500"
           >
-            Create an account
+            Sign in
           </Link>
         </p>
       </div>
