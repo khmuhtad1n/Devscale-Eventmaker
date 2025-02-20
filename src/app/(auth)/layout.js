@@ -12,14 +12,6 @@ export default async function Page({ children }) {
                 eventmakers.
               </Link>
             </div>
-
-            <div className="flex items-center gap-4">
-              <Link href="/dashboard">
-                <Button variant="ghost" size="sm">
-                  Explore Events
-                </Button>
-              </Link>
-            </div>
           </div>
         </nav>
       </header>

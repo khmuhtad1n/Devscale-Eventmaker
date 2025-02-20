@@ -4,6 +4,13 @@ import { prisma } from "@/utils/prisma";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 
+export async function logoutAction() {
+  "use server";
+  const cookieStore = cookies();
+  cookieStore.delete("sessionId");
+  redirect("/");
+}
+
 export default async function Page({ children }) {
   const cookieStore = await cookies();
   const sessionId = cookieStore.get("sessionId")?.value;
@@ -37,9 +44,11 @@ export default async function Page({ children }) {
             </div>
 
             <div className="flex items-center gap-4">
-              <Button variant="primary" href="/logout">
-                Logout
-              </Button>
+              <form action={logoutAction}>
+                <Button type="submit" color="primary" size="sm">
+                  Logout
+                </Button>
+              </form>
             </div>
           </div>
         </nav>
