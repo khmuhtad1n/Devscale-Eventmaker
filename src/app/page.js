@@ -10,10 +10,11 @@ export default function Page() {
             Create Memorable{" "}
             <span className="text-primary-600">Experiences</span>
           </h1>
-          
+
           <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-            Your all-in-one platform for creating, managing, and discovering amazing events. 
-            Join our community of event enthusiasts and make every moment count.
+            Your all-in-one platform for creating, managing, and discovering
+            amazing events. Join our community of event enthusiasts and make
+            every moment count.
           </p>
 
           <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -26,7 +27,7 @@ export default function Page() {
                 Get Started
               </Button>
             </Link>
-            <Link href="/events">
+            <Link href="/dashboard">
               <Button
                 size="lg"
                 variant="ghost"

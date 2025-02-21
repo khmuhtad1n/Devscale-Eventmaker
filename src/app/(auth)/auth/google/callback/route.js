@@ -7,7 +7,7 @@ export async function GET(req) {
   const query = req.nextUrl.searchParams;
   const code = query.get("code");
 
-  console.log({ code });
+  // console.log({ code });
 
   const cookieStore = await cookies();
   const codeVerifier = cookieStore.get("codeVerifier")?.value;
@@ -41,9 +41,10 @@ export async function GET(req) {
       data: {
         name: data.name,
         email: data.email,
-        avatarUrl: data.picture,
       },
     });
+
+    //buat baryu session
     const newSession = await prisma.session.create({
       data: {
         userId: newUser.id,
