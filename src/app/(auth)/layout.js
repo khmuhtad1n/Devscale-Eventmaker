@@ -1,4 +1,3 @@
-import { Button } from "@heroui/react";
 import Link from "next/link";
 
 export default async function Page({ children }) {
