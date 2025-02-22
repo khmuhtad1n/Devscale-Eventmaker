@@ -13,7 +13,7 @@ export default function Page() {
         <div className="mb-8">
           <h1 className="text-2xl font-bold">Tanya Mas2 AI - beta</h1>
           <p className="text-gray-600">
-            Jelaskan ide eventmu, ai akan coba review
+            Jelaskan ide eventmu, ai akan coba review!
           </p>
         </div>
 
