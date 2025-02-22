@@ -1,6 +1,8 @@
 "use server";
+import { auth } from "@/libs/auth";
 import { prisma } from "@/utils/prisma";
 import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
 
 export async function registerAction(_, formData) {
   const name = formData.get("name");
