@@ -1,32 +1,8 @@
-import { Card } from "@heroui/react";
-import Link from "next/link";
-import {
-  CategoryEvent,
-  CategorySection,
-} from "../(app)/_components/category-card";
-import { EventCard, EventSection } from "../(app)/_components/event-card";
-import { LocationSection } from "../(app)/_components/location-card";
+import { CategorySection } from "./_components/category-card";
+import { EventSection } from "./_components/event-card";
+import { LocationSection } from "./_components/location-card";
 
 export default async function Page() {
-  const locations = [
-    {
-      name: "Asia & Pacific",
-      cities: [
-        { name: "Bangkok", events: "12" },
-        { name: "Jakarta", events: "8" },
-        { name: "Kuala Lumpur", events: "8" },
-        { name: "Manila", events: "5" },
-      ],
-    },
-    {
-      name: "Americas",
-      cities: [
-        { name: "San Francisco", events: "25" },
-        { name: "New York", events: "18" },
-      ],
-    },
-  ];
-
   return (
     <div className="space-y-12">
       <section>

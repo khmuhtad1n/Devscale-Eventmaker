@@ -1,3 +1,3 @@
 export default function page() {
-  return <div>Protected Route</div>;
+  return <div>Will generate later</div>;
 }

@@ -35,10 +35,10 @@ export const CategorySection = async () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-1">
-                    {cat.category.toLocaleUpperCase()}
+                    {cat.category.toUpperCase()}
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    {cat._count.category} Events
+                    {cat._count.category} events
                   </p>
                 </div>
               </div>
