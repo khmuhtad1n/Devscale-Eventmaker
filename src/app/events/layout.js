@@ -4,28 +4,28 @@ export default async function Page({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-white border-b border-gray-200">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-xl font-bold text-black">
+              <Link href="/dashboard" className="text-xl font-bold text-black">
                 eventmakers.
               </Link>
             </div>
           </div>
-        </nav>
+        </div>
       </header>
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="bg-white shadow-sm rounded-lg p-6">{children}</div>
+        <div className="min-h-[calc(100vh-13rem)]">{children}</div>
       </main>
 
       <footer className="bg-white border-t border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
+          <div className="w-full flex items-center justify-between">
             <p className="text-sm text-gray-500">
               ©2025 Eventmakers. All rights reserved.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center">
               <a
                 href="https://github.com/khmuhtadin/Devscale-Eventmaker"
                 target="_blank"
@@ -35,8 +35,8 @@ export default async function Page({ children }) {
                 <span className="sr-only">GitHub</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
+                  width="24"
+                  height="24"
                   viewBox="0 0 24 24"
                 >
                   <path
