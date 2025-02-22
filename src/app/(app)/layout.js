@@ -14,6 +14,9 @@ export async function logoutAction() {
 
 export default async function Page({ children }) {
   const session = await auth();
+  if (!session) {
+    redirect("/login");
+  }
 
   return (
     <div className="min-h-screen flex flex-col">

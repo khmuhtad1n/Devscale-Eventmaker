@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { loginAction } from "./action";
 import { OauthButton } from "../_components/oauthButton";
 import Link from "next/link";
+import { StateStatus } from "@/libs/state-status";
 
 export default function Page() {
   const [state, formAction, pending] = useActionState(loginAction, null);
@@ -29,7 +30,6 @@ export default function Page() {
               type="email"
               variant="underlined"
               size="lg"
-              required
             />
             <Input
               label="Password"
@@ -38,7 +38,6 @@ export default function Page() {
               type="password"
               variant="underlined"
               size="lg"
-              required
             />
           </div>
 
@@ -51,21 +50,7 @@ export default function Page() {
           >
             Sign in
           </Button>
-
-          {state?.status === "error" && (
-            <div className="p-4 rounded-lg bg-rose-50 border border-rose-200">
-              <p className="text-sm text-rose-600 text-center">
-                {state.message}
-              </p>
-            </div>
-          )}
-          {state?.status === "success" && (
-            <div className="p-4 rounded-lg bg-emerald-50 border border-emerald-200">
-              <p className="text-sm text-emerald-600 text-center">
-                {state.message}
-              </p>
-            </div>
-          )}
+          <StateStatus state={state} />
         </form>
 
         <div className="relative my-8">

@@ -35,6 +35,7 @@ model Session {
 model Event {
   id String @id @default(cuid())
   title String
+  category String
   description String
   date DateTime
   location String
