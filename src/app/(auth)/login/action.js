@@ -1,5 +1,4 @@
 "use server";
-import { auth } from "@/libs/auth";
 import { prisma } from "@/utils/prisma";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
@@ -9,13 +8,6 @@ export async function loginAction(_, formData) {
   const cookieStore = await cookies();
   const email = formData.get("email");
   const password = formData.get("password");
-
-  //this should check the sessionId , so if its exist should redirect to dashboard
-  // const session = await auth();
-
-  // if (session !== null) {
-  //   redirect("/dashboard");
-  // }
 
   if (!email || !password) {
     return {

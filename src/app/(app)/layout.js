@@ -4,7 +4,6 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import { auth } from "@/libs/auth";
 import Avatar from "boring-avatars";
-import { Sidebar } from "./_components/sidebar";
 
 export async function logoutAction() {
   "use server";
@@ -21,8 +20,8 @@ export default async function Page({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-white border-b border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Link href="/dashboard" className="text-xl font-bold text-black">
@@ -81,17 +80,9 @@ export default async function Page({ children }) {
         </div>
       </header>
 
-      <div className="flex-1 flex">
-        <aside className="w-64 flex-shrink-0">
-          <Sidebar />
-        </aside>
-
-        <main className="flex-1 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="min-h-[calc(100vh-13rem)]">{children}</div>
-          </div>
-        </main>
-      </div>
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="min-h-[calc(100vh-13rem)]">{children}</div>
+      </main>
 
       <footer className="bg-white border-t border-gray-200 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">

@@ -71,18 +71,6 @@ export default function Page() {
 
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">
-              Location
-            </label>
-            <Input
-              name="location"
-              placeholder="add location"
-              variant="underlined"
-              size="lg"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700">
               Description
             </label>
             <Textarea

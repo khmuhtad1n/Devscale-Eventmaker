@@ -1,8 +1,7 @@
 "use server";
 
 import { auth } from "@/libs/auth";
-import { uploadFile } from "@/libs/file-ops";
-import { prisma } from "@/utils/prisma";
+import { Prisma } from "@prisma/client";
 
 export async function createEventAction(_, formData) {
   const title = await formData.get("title");
@@ -10,7 +9,6 @@ export async function createEventAction(_, formData) {
   const image = await formData.get("image");
   const datetime = await formData.get("datetime");
   const description = await formData.get("description");
-  const location = await formData.get("location");
 
   const session = await auth();
 
@@ -21,29 +19,21 @@ export async function createEventAction(_, formData) {
     };
   }
 
-  if (!title || !category || !datetime || !description || !location) {
+  if (!title || !category || !datetime || !description) {
     return {
       status: "error",
       message: "all fields are required",
     };
   }
 
-  const newEvent = await prisma.event.create({
+  const newEvent = await Prisma.event.create({
     data: {
       title,
-      date: new Date(datetime),
       category,
-      location,
       description,
       image: image.size !== 0 ? image.name : "",
       authorId: session.user.id,
     },
-  });
-
-  await uploadFile({
-    key: image.name,
-    folder: newEvent.id,
-    body: image,
   });
 
   return {

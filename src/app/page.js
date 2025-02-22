@@ -27,7 +27,7 @@ export default function Page() {
                 Get Started
               </Button>
             </Link>
-            <Link href="/events">
+            <Link href="/dashboard">
               <Button
                 size="lg"
                 variant="ghost"
