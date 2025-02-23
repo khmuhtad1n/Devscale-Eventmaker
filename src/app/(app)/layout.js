@@ -21,18 +21,18 @@ export default async function Page({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-white border-b border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+      <header className="bg-white border-b border-gray-200">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 w-full">
+            <div className="flex-shrink-0">
               <Link href="/dashboard" className="text-xl font-bold text-black">
                 eventmakers.
               </Link>
             </div>
 
-            <div className="flex items-center gap-4">
-              {session ? (
-                <div className="flex gap-2 items-center font-semibold">
+            <div className="flex items-center space-x-4">
+              {session && (
+                <div className="hidden sm:flex items-center gap-2 font-semibold">
                   <div>{session.user.name}</div>
                   <Avatar
                     size={40}
@@ -46,8 +46,6 @@ export default async function Page({ children }) {
                     ]}
                   />
                 </div>
-              ) : (
-                ""
               )}
               <form action={logoutAction}>
                 <Button

@@ -1,26 +1,40 @@
 import Link from "next/link";
+import { Button } from "@heroui/react";
 
 export default async function Page({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-white border-b border-gray-200">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+            <div className="flex-shrink-0">
               <Link href="/" className="text-xl font-bold text-black">
                 eventmakers.
               </Link>
             </div>
+            <div>
+              <Link href="/events">
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="font-medium p-4 hover:bg-primary-50"
+                >
+                  Explore Events
+                </Button>
+              </Link>
+            </div>
           </div>
-        </nav>
+        </div>
       </header>
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="bg-white shadow-sm rounded-lg p-6">{children}</div>
+      <main className="flex-1">
+        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="bg-white shadow-sm rounded-lg p-6">{children}</div>
+        </div>
       </main>
 
-      <footer className="bg-white border-t border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <footer className="bg-white border-t border-gray-200">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-sm text-gray-500">
               ©2025 Eventmakers. All rights reserved.

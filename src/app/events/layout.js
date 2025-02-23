@@ -1,3 +1,4 @@
+import { Button } from "@heroui/react";
 import Link from "next/link";
 
 export default async function Page({ children }) {
@@ -9,6 +10,17 @@ export default async function Page({ children }) {
             <div className="flex items-center">
               <Link href="/dashboard" className="text-xl font-bold text-black">
                 eventmakers.
+              </Link>
+            </div>
+            <div>
+              <Link href="/login">
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="font-medium p-4 hover:bg-primary-50"
+                >
+                  Login
+                </Button>
               </Link>
             </div>
           </div>
