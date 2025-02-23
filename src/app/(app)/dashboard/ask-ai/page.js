@@ -11,7 +11,7 @@ export default function Page() {
     <div>
       <div className="max-w-2xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold">Tanya Mas2 AI - beta</h1>
+          <h1 className="text-2xl font-bold">Tanya Mas2 AI - BETA</h1>
           <p className="text-gray-600">
             Jelaskan ide eventmu, ai akan coba review
           </p>
