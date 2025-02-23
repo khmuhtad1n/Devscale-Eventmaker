@@ -2,15 +2,21 @@ import React from "react";
 import { prisma } from "@/utils/prisma";
 import { Card } from "@heroui/react";
 import Link from "next/link";
+import { auth } from "@/libs/auth";
 import Image from "next/image";
 
-export const EventSection = async () => {
+export const MyEvent = async () => {
+  const session = await auth();
   const events = await prisma.event.findMany({
-    orderBy: {
-      date: "desc",
+    where: {
+      authorId: session?.user?.id,
     },
     include: {
+      participants: true,
       author: true,
+    },
+    orderBy: {
+      createdAt: "desc",
     },
   });
 

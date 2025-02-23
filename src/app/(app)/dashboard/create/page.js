@@ -52,7 +52,6 @@ export default function Page() {
             <Input
               name="image"
               type="file"
-              accept="image/*"
               className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100"
             />
           </div>

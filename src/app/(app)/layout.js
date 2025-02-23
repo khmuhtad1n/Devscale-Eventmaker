@@ -1,3 +1,4 @@
+import { Onest } from "next/font/google";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { Button } from "@heroui/react";
@@ -13,6 +14,11 @@ export async function logoutAction() {
   redirect("/");
 }
 
+const onest = Onest({
+  subsets: ["latin"],
+  variable: "--font-onest",
+});
+
 export default async function Page({ children }) {
   const session = await auth();
   if (!session) {
@@ -20,19 +26,19 @@ export default async function Page({ children }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="bg-white border-b border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+    <div className={`${onest.variable} font-sans min-h-screen flex flex-col`}>
+      <header className="bg-white border-b border-gray-200">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 w-full">
+            <div className="flex-shrink-0">
               <Link href="/dashboard" className="text-xl font-bold text-black">
                 eventmakers.
               </Link>
             </div>
 
-            <div className="flex items-center gap-4">
-              {session ? (
-                <div className="flex gap-2 items-center font-semibold">
+            <div className="flex items-center space-x-4">
+              {session && (
+                <div className="hidden sm:flex items-center gap-2 font-semibold">
                   <div>{session.user.name}</div>
                   <Avatar
                     size={40}
@@ -46,8 +52,6 @@ export default async function Page({ children }) {
                     ]}
                   />
                 </div>
-              ) : (
-                ""
               )}
               <form action={logoutAction}>
                 <Button
@@ -93,11 +97,11 @@ export default async function Page({ children }) {
         </main>
       </div>
 
-      <footer className="bg-white border-t border-gray-200 mt-auto">
+      <footer className="bg-white border-t border-gray-200 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
           <div className="w-full flex items-center justify-between">
             <p className="text-sm text-gray-500">
-              ©2025 Eventmakers. All rights reserved.
+              © 2025 eventmakers. All rights reserved.
             </p>
             <div className="flex items-center">
               <a

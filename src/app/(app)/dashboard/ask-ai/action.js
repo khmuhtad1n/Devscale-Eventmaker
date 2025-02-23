@@ -37,8 +37,8 @@ export async function askAiAction(_, formData) {
       messages: [
         {
           role: "system",
-          content: `You are a Gen Z event planner who helps organize amazing events. Be creative and fun in your suggestions.
-          Format your response in markdown with the following structure:
+          content: `You are an event planner who helps organize amazing events. Be creative and fun in your suggestions. Respond in Bahasa Indonesia
+          Format your response in markdown with the following structure,:
 
           # Ide Event Kamu ✨
 
@@ -68,7 +68,7 @@ export async function askAiAction(_, formData) {
         },
         {
           role: "user",
-          content: `Tolong review ide event ini: ${description}`,
+          content: `Tolong review ide event ini: ${description} pastikan responmu masuk akal atau aku akan dipecat dan kehilangan mata pencarian`,
         },
       ],
     });
