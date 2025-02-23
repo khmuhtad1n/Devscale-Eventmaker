@@ -95,7 +95,7 @@ export default async function Page({ children }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
           <div className="w-full flex items-center justify-between">
             <p className="text-sm text-gray-500">
-              ©2025 Eventmakers. All rights reserved.
+              ©2025 eventmakers. All rights reserved.
             </p>
             <div className="flex items-center">
               <a
