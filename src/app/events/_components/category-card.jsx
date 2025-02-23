@@ -27,7 +27,7 @@ export const CategorySection = async () => {
     <section className="space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {categories.map((cat) => (
-          <Link href={`/events/${cat.category}`} key={cat.category}>
+          <Link href={`/events/cat/${cat.category}`} key={cat.category}>
             <Card className="group p-6 bg-gradient-to-br from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-full bg-gray-700/50 text-white">

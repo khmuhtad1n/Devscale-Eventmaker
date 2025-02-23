@@ -56,6 +56,7 @@ export async function loginAction(_, formData) {
     httpOnly: true,
     sameSite: true,
     secure: process.env.NODE_ENV === "production",
+    expires: new Date(Date.now() + 60 * 60 * 1000), //
   });
 
   redirect("/dashboard");

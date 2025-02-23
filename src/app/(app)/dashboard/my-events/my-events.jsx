@@ -29,7 +29,7 @@ export const MyEvent = async () => {
               <div className="aspect-video relative">
                 {event.image ? (
                   <Image
-                    src={`https://pub-7f2bbc06dc9149ea8dbfa51c713c10a5.r2.dev/eventmakers/${event.id}/${event.image}`}
+                    src={`${process.env.R2_PUBLIC_URL}/${event.id}/${event.image}`}
                     alt={event.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
