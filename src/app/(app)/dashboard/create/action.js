@@ -40,11 +40,7 @@ export async function createEventAction(_, formData) {
     },
   });
 
-  await uploadFile({
-    key: image.name,
-    folder: newEvent.id,
-    body: image,
-  });
+  await uploadFile({ key: image.name, folder: newEvent.id, body: image });
 
   return {
     status: "success",
