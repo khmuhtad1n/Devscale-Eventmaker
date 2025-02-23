@@ -3,6 +3,7 @@ import { prisma } from "@/utils/prisma";
 import { Card } from "@heroui/react";
 import Link from "next/link";
 import { auth } from "@/libs/auth";
+import Image from "next/image";
 
 export const MyEvent = async () => {
   const session = await auth();
@@ -28,6 +29,13 @@ export const MyEvent = async () => {
             <Card className="group p-4 bg-gradient-to-br from-gray-50 to-white hover:shadow-lg transition-all duration-300">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
+                  <Image
+                    src={`https://pub-7f2bbc06dc9149ea8dbfa51c713c10a5.r2.dev/eventmakers/${event.id}/${event.image}`}
+                    alt={event.title}
+                    width={300}
+                    height={200}
+                    className="rounded-lg"
+                  />
                   <span className="text-sm text-gray-500">
                     {new Date(event.date).toLocaleDateString()}
                   </span>
