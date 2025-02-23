@@ -3,6 +3,7 @@ import { Button, Textarea } from "@heroui/react";
 import { useActionState } from "react";
 import { askAiAction } from "./action";
 import { StateStatus } from "@/libs/state-status";
+import ReactMarkdown from "react-markdown";
 
 export default function Page() {
   const [state, formAction, pending] = useActionState(askAiAction, null);
@@ -43,8 +44,7 @@ export default function Page() {
 
           {state?.data && (
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <h3 className="font-medium mb-2">AI Suggestion:</h3>
-              <p className="whitespace-pre-wrap text-gray-600">{state.data}</p>
+              <ReactMarkdown>{state.data}</ReactMarkdown>
             </div>
           )}
 

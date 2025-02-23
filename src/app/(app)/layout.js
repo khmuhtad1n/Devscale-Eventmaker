@@ -1,3 +1,4 @@
+import { Onest } from "next/font/google";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { Button } from "@heroui/react";
@@ -13,6 +14,11 @@ export async function logoutAction() {
   redirect("/");
 }
 
+const onest = Onest({
+  subsets: ["latin"],
+  variable: "--font-onest",
+});
+
 export default async function Page({ children }) {
   const session = await auth();
   if (!session) {
@@ -20,7 +26,7 @@ export default async function Page({ children }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`${onest.variable} font-sans min-h-screen flex flex-col`}>
       <header className="bg-white border-b border-gray-200">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 w-full">
