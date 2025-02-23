@@ -5,21 +5,22 @@ export default async function Page({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/dashboard" className="text-xl font-bold text-black">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 w-full">
+            <div className="flex-shrink-0">
+              <Link href="/" className="text-xl font-bold text-black">
                 eventmakers.
               </Link>
             </div>
-            <div>
+
+            <div className="flex items-center space-x-4">
               <Link href="/login">
                 <Button
-                  variant="primary"
+                  variant="outline"
                   size="sm"
-                  className="font-medium p-4 hover:bg-primary-50"
+                  className="font-medium px-4 hover:bg-primary-50"
                 >
-                  Login
+                  Sign In
                 </Button>
               </Link>
             </div>
