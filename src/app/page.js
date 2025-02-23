@@ -1,9 +1,17 @@
 import Link from "next/link";
 import { Button } from "@heroui/react";
+import { Onest } from "next/font/google";
+
+const onest = Onest({
+  subsets: ["latin"],
+  variable: "--font-onest",
+});
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div
+      className={`${onest.variable} font-sans min-h-screen bg-gradient-to-b from-gray-50 to-white `}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-xl font-bold text-black">
