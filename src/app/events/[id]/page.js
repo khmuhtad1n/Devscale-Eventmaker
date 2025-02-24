@@ -73,12 +73,15 @@ export default async function Page({ params }) {
             </div>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-2 flex space-x-2">
             <Link href={`/events/${event.id}/join`}>
               <Button size="lg" color="primary" className="w-full md:w-auto">
                 Register Now
               </Button>
             </Link>
+            <Button size="lg" color="danger" className="w-full md:w-auto">
+              Delete Event
+            </Button>
           </div>
         </div>
       </div>
